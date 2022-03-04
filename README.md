@@ -1,64 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## SOBRE O PROJETO
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Essa API foi desenvolvida com o foco de realizar uma CRUD de notícias
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## AMBIENTE
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Ambiente de desenvolvimento: Docker
+Framework: Laravel
+Linguagem: PHP
+Banco: Mysql
+Aplicativo de Teste de API: Postman
 
-## Learning Laravel
+O projeto utiliza a nova ferramenta de linha de comando que é o "Laravel Sail".
+O Laravel Sail permite o usuário criar e gerenciar o seu projeto laravel
+no ambiente de desenvolvimento docker.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Porta MYSQL: 80
+Porta Servidor: 3306
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Observação:
+Casos o Sistema Operacional for Windows, é necessário ter:
+    - WSL2 instalada e ativada
+    - Ubuntu para WSL2 instalado
+    - Docker Desktop Instalado e Configurado
 
-## Laravel Sponsors
+Todo os comandos serão realizados no ambiente Linux, então é necessário que o usuário acesse o terminal do
+"ubuntu", pois é lá que rodamos os containers.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+P.S: ADICIONAR LINKS PARA FACILITAR INSTALAÇÃO
+## PASSO A PASSO
 
-### Premium Partners
+1º Passo: Iniciar os containers Docker
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml".
 
-## Contributing
+Após instalar o projeto, deve rodar o comando:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
 
-## Code of Conduct
+Caso o projeto ja esteja instalado e os containers existentes, deve-se apenas subir os containers, rodar o comando:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+./vendor/bin/sail up
 
-## Security Vulnerabilities
+Para pausar os containers:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+./vendor/bin/sail stop
 
-## License
+2º Passo: Criar as tabelas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+./vendor/bin/sail artisan migrate
+
+3º Passo: Gerar as seeders
+
+./vendor/bin/sail artisan db:seed
+
+
+PRONTO!
+Agora a API está funcionando!
+
+Documentação da API no Postman: https://documenter.getpostman.com/view/5876341/UVktqYpc
+
+
+
+
