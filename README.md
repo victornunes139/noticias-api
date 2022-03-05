@@ -62,13 +62,6 @@ Caso deseje pausar os containers:
 ./vendor/bin/sail artisan db:seed
 
 PRONTO! Agora a API está funcionando!
-
-Documentação da API no Postman: https://documenter.getpostman.com/view/5876341/UVktqYpc
-
-```bash
-  npm install my-project
-  cd my-project
-```
     
 ## API Reference
 
@@ -107,7 +100,7 @@ Documentação da API no Postman: https://documenter.getpostman.com/view/5876341
 | `id`      | `number` | **Required**  |
 
 
-## Documentação
+## Documentação da API
 
-[Documentation](https://documenter.getpostman.com/view/5876341/UVktqYpc)
+[Documentação](https://documenter.getpostman.com/view/5876341/UVktqYpc)
 
