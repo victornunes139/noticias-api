@@ -19,12 +19,12 @@ API desenvolvida para Criar, Listar, Atualizar e Deletar Noticias.
 
 **Banco de dados:** Mysql
 
-**Plataforma para teste da api:**: Postman
+**Plataforma para teste da api:** Postman
 
 
 
 
-## Installation
+## Instalação
 
 **1º Passo**: Iniciar os containers Docker
 
@@ -107,7 +107,7 @@ Documentação da API no Postman: https://documenter.getpostman.com/view/5876341
 | `id`      | `number` | **Required**  |
 
 
-## Documentation
+## Documentação
 
 [Documentation](https://documenter.getpostman.com/view/5876341/UVktqYpc)
 
