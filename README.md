@@ -1,113 +1,71 @@
 
-![Logo](https://www.opovo.com.br/reboot/includes/assets/img/opovo%20logo.svg)
 
+## SOBRE O PROJETO
 
-# Noticias-API
+Essa API foi desenvolvida com o foco de realizar uma CRUD de notícias
 
-API desenvolvida para Criar, Listar, Atualizar e Deletar Noticias.
+## AMBIENTE
 
+Ambiente de desenvolvimento: Docker
+Framework: Laravel
+Linguagem: PHP
+Banco: Mysql
+Aplicativo de Teste de API: Postman
 
+O projeto utiliza a nova ferramenta de linha de comando que é o "Laravel Sail".
+O Laravel Sail permite o usuário criar e gerenciar o seu projeto laravel
+no ambiente de desenvolvimento docker.
 
+Porta MYSQL: 80
+Porta Servidor: 3306
 
-## Tecnologias Utilizadas
+Observação:
+Casos o Sistema Operacional for Windows, é necessário ter:
+    - WSL2 instalada e ativada
+    - Ubuntu para WSL2 instalado
+    - Docker Desktop Instalado e Configurado
 
-**Ambiente de Desenvolvimento:** Docker
+Todo os comandos serão realizados no ambiente Linux, então é necessário que o usuário acesse o terminal do
+"ubuntu", pois é lá que rodamos os containers.
 
-**Linguagem:** PHP
+P.S: ADICIONAR LINKS PARA FACILITAR INSTALAÇÃO
+## PASSO A PASSO
 
-**Framework:** Laravel
-
-**Banco de dados:** Mysql
-
-**Plataforma para teste da api:**: Postman
-
-
-
-
-## Installation
-
-**1º Passo**: Iniciar os containers Docker
+1º Passo: Iniciar os containers Docker
 
 Deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml".
 
-Após clonar o projeto, deve-se rodar o comando:
+Após instalar o projeto, deve rodar o comando:
 
-```bash
-docker run --rm
--u "$(id -u):$(id -g)"
--v $(pwd):/var/www/html
--w /var/www/html
-laravelsail/php81-composer:latest
-composer install --ignore-platform-reqs
-```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
 
-Agora deve-se apenas subir os containers, rodar o comando:
+Caso o projeto ja esteja instalado e os containers existentes, deve-se apenas subir os containers, rodar o comando:
 
-```bash
 ./vendor/bin/sail up
-```
 
-Caso deseje pausar os containers:
+Para pausar os containers:
 
-```bash
 ./vendor/bin/sail stop
-```
 
-**2º Passo:** Criar as tabelas
+2º Passo: Criar as tabelas
 
 ./vendor/bin/sail artisan migrate
 
-**3º Passo:** Gerar as seeders
+3º Passo: Gerar as seeders
 
 ./vendor/bin/sail artisan db:seed
 
-PRONTO! Agora a API está funcionando!
+
+PRONTO!
+Agora a API está funcionando!
 
 Documentação da API no Postman: https://documenter.getpostman.com/view/5876341/UVktqYpc
 
-```bash
-  npm install my-project
-  cd my-project
-```
-    
-## API Reference
-
-#### Get all news
-
-```http
-  GET /api/news
-```
-
-#### Get specific news
-
-```http
-  GET /api/items/{id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**  |
 
 
-
-#### Create news
-
-```http
-  POST /api/items
-```
-
-#### Update news
-
-```http
-  PUT /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**  |
-
-
-## Documentation
-
-[Documentation](https://documenter.getpostman.com/view/5876341/UVktqYpc)
 
