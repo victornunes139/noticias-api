@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use Illuminate\Http\Response;
-use App\Http\Resources\News as NewsResource;
 use App\Models\News;
 
 class NewsController extends Controller
@@ -17,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return response()->json(['news'=> News::all()], Response::HTTP_OK);
+        return response()->json(News::all(), Response::HTTP_OK);
     }
 
     /**
@@ -45,7 +44,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        return response()->json(['news'=> $news], Response::HTTP_OK);
+        return response()->json($news, Response::HTTP_OK);
     }
 
     /**

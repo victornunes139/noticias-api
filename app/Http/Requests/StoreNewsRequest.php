@@ -28,6 +28,7 @@ class StoreNewsRequest extends FormRequest
             'caption' => 'required|string|max:150',
             'body' => 'required',
             'type' => 'required|string',
+            'author' => 'required|string|max:100',
             'media' => 'nullable|url'
         ];
     }

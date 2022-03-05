@@ -28,6 +28,7 @@ class UpdateNewsRequest extends FormRequest
             'caption' => 'string|min:5|max:150',
             'body' => 'string',
             'type' => 'string',
+            'author' => 'string',
             'media' => 'nullable|url'
         ];
     }
