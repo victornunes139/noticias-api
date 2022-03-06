@@ -4,7 +4,7 @@
 
 # Noticias-API
 
-API desenvolvida para Criar, Listar, Atualizar e Deletar Noticias.
+API desenvolvida para criar, listar, atualizar e deletar notícias.
 
 
 
@@ -21,6 +21,11 @@ API desenvolvida para Criar, Listar, Atualizar e Deletar Noticias.
 
 **Plataforma para teste da api:** Postman
 
+**Observação**: \
+Nesse projeto foi utilizado o **Laravel Sail**. \
+O **Laravel Sail** é uma interface de linha de comando leve para interagir com o ambiente de desenvolvimento Docker padrão do Laravel.  
+O `sail` script fornece uma CLI com métodos convenientes para interagir com os contêineres do Docker definidos pelo docker-compose.yml.
+
 
 
 
@@ -28,9 +33,9 @@ API desenvolvida para Criar, Listar, Atualizar e Deletar Noticias.
 
 **1º Passo**: Iniciar os containers Docker
 
-Deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml".
+Após clonar o projeto,   deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml", então:
 
-Após clonar o projeto, deve-se rodar o comando:
+Rodar o comando para instalar as dependências:
 
 ```bash
 docker run --rm
@@ -41,28 +46,51 @@ laravelsail/php81-composer:latest
 composer install --ignore-platform-reqs
 ```
 
-Agora deve-se apenas subir os containers, rodar o comando:
+**2º Passo:**  Gerar o alias para o comando original do sail
 
 ```bash
-./vendor/bin/sail up
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 ```
 
-Caso deseje pausar os containers:
+**3º Passo:**  Gerar o arquivo .env
 
 ```bash
-./vendor/bin/sail stop
+cp .env.example .env
 ```
 
-**2º Passo:** Criar as tabelas
+**4º Passo:** Agora devemos subir os containers e criar os volumes, rodar o comando:
 
-./vendor/bin/sail artisan migrate
+```bash
+sail up -d
+```
 
-**3º Passo:** Gerar as seeders
+**5º Passo:**  Setar APP_KEY no .env
 
-./vendor/bin/sail artisan db:seed
+```bash
+sail artisan key:generate
+```
 
-PRONTO! Agora a API está funcionando!
-    
+**6º Passo:** Criar as tabelas
+
+```bash
+sail artisan migrate
+```
+
+**7º Passo:** Gerar as seeders
+
+```bash
+sail artisan db:seed
+```
+
+#### PRONTO! A API está funcionando! :grinning:
+
+
+**Obs**: Caso deseje encerrar os containers:
+
+```bash
+./vendor/bin/sail down
+```
+
 ## API Reference
 
 #### Get all news
