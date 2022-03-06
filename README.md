@@ -33,17 +33,21 @@ O `sail` script fornece uma CLI com métodos convenientes para interagir com os 
 
 **1º Passo**: Iniciar os containers Docker
 
-Após clonar o projeto,   deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml", então:
-
-Rodar o comando para instalar as dependências:
+Após clonar o projeto, deve-se entrar na pasta raiz do projeto, onde se encontra o arquivo "docker-compose.yml" :
 
 ```bash
-docker run --rm
--u "$(id -u):$(id -g)"
--v $(pwd):/var/www/html
--w /var/www/html
-laravelsail/php81-composer:latest
-composer install --ignore-platform-reqs
+cd noticias-api/
+```
+
+Estando na pasta raiz do projeto, deve-se rodar o comando para instalar as dependências:
+
+```bash
+docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -v $(pwd):/var/www/html \
+  -w /var/www/html \
+  laravelsail/php81-composer:latest \
+  composer install --ignore-platform-reqs
 ```
 
 **2º Passo:**  Gerar o alias para o comando original do sail
