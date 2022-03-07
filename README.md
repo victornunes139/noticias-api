@@ -106,7 +106,7 @@ sail artisan db:seed
 #### Get specific news
 
 ```http
-  GET /api/items/{id}
+  GET /api/news/{id}
 ```
 
 | Parameter | Type     | Description                       |
@@ -118,13 +118,13 @@ sail artisan db:seed
 #### Create news
 
 ```http
-  POST /api/items
+  POST /api/news
 ```
 
 #### Update news
 
 ```http
-  PUT /api/items/${id}
+  PUT /api/news/${id}
 ```
 
 | Parameter | Type     | Description                       |
